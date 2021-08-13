@@ -11,7 +11,7 @@ RUN \
 	git clone https://github.com/danmar/cppcheck.git && \
 	cd cppcheck && \
 	[[ `echo ${SOURCE_BRANCH} | grep -E ^[0-9.]+$` ]] && git checkout tags/${SOURCE_BRANCH} || true && \
-	make install FILESDIR=/cfg HAVE_RULES=yes CXXFLAGS="-O2 -DNDEBUG --static" -j `getconf _NPROCESSORS_ONLN` && \
+	make install FILESDIR=/cfg CFGDIR=/cfg HAVE_RULES=yes CXXFLAGS="-O2 -DNDEBUG --static" -j `getconf _NPROCESSORS_ONLN` && \
 	strip /usr/bin/cppcheck && \
 	apk del .required_apks && \
 	rm -rf /usr/src && \
